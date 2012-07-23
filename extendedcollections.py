@@ -5,11 +5,20 @@ class Node:
 
 class LinkedList:
         def __init__(self):
+                """Create a new LinkedList."""
                 self.__last = None
                 self.__first = self.__last
                 self.__size = 0
 
         def add(self,value,**kwargs):
+                """Add a value to the end of the LinkedList
+
+                Keyword arguments:
+                index -- the index at which this value should be added.
+
+                Raises:
+                IndexError -- if index is out of bounds.
+                """
                 index = kwargs.get('index')
                 if index:
                        self.__addIndex(value,index)
@@ -18,15 +27,22 @@ class LinkedList:
                 self.__size += 1
 
         def addFirst(self,value):
+                """Add a value to the first of the LinkedList."""
                 new_node = Node()
                 new_node.value = value
                 new_node.next = self.__first
                 self.__first = new_node
 
         def addLast(self,value):
+                """Add a value to the last of the LinkedList."""
                 self.add(value)
 
         def get(self,index):
+                """Return the value at the given index.
+
+                Raises:
+                IndexError -- if index is out of bounds
+                """
                 if index > self.__size:
                         raise IndexError('Index '+str(index)+' out of bounds')
                 ref = self.__first
