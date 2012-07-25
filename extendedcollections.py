@@ -1,9 +1,19 @@
+"""Extended Collections
+
+Standard data structures implemented in python
+
+Author: Dustin Schultz <schultz.dustin@gmail.com>
+
+"""
+
 class Node:
+        """A individual node within a singly LinkedList"""
         def __init__(self):
                 self.value = None
                 self.next = None
 
 class LinkedList:
+        """A singly LinkedList data structure"""
         def __init__(self):
                 """Create a new LinkedList."""
                 self.__last = None
@@ -51,16 +61,21 @@ class LinkedList:
                         ref = ref.next
                         i = i+1
                 return ref.value
+
         def getFirst(self):
+                """Return the first value within the LinkedList."""
                 return self.__first.value
 
         def getLast(self):
+                """Return the last value within the LinkedList."""
                 return self.__last.value
 
         def size(self):
+                """Return the size of the LinkedList"""
                 return self.__size
 
         def __add(self, value):
+                """Private add function for adding a value."""
                 new_node = Node()
                 new_node.value = value
                 if self.__first == None:
@@ -70,6 +85,7 @@ class LinkedList:
                 self.__last = new_node
 
         def __addIndex(self, value, index):
+                """Private add function with index for adding value."""
                 if index == 0:
                         return self.addFirst(value)
                 if index >= self.__size:
@@ -85,6 +101,7 @@ class LinkedList:
                 ref.next = new_node
 
         def __contains__(self, obj):
+                """Return whether or not the object is in the LinkedList."""
                 ref = self.__first
                 while ref is not None:
                         if ref.value == obj:
@@ -93,9 +110,11 @@ class LinkedList:
                 return False
 
         def __len__(self):
+                """Return the len() of the LinkedList."""
                 return self.size()
 
         def __repr__(self):
+                """Return a string representation of the LinkedList."""
                 ref = self.__first
                 s = []
                 while ref is not None:
